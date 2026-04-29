@@ -4,7 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IA Detector</title>
-    <link rel="stylesheet" href="/style.css">
+    
+    <style>
+        /* --- SEU CSS INTEGRADO --- */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e5eff5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .title {
+            color: #1f3e5a;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button {
+            background-color: #c5d423;
+            color: #1f3e5a;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 0 #a3b01d;
+        }
+
+        button:hover {
+            background-color: #d8e63a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #a3b01d;
+        }
+
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 0 0 #a3b01d;
+        }
+
+        #webcam-container {
+            margin: 20px auto;
+            border: 6px solid #1f3e5a;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #label-container div {
+            background-color: #f1f5f8;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            color: #1f3e5a;
+            font-size: 14px;
+            font-weight: 600;
+            border-left: 6px solid #2ab2af;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,10 +121,10 @@
             await webcam.play();
             window.requestAnimationFrame(loop);
 
-            document.getElementById("webcam-container").innerHTML = ""; // Limpa texto anterior
+            document.getElementById("webcam-container").innerHTML = ""; 
             document.getElementById("webcam-container").appendChild(webcam.canvas);
             labelContainer = document.getElementById("label-container");
-            labelContainer.innerHTML = ""; // Limpa labels anteriores
+            labelContainer.innerHTML = ""; 
             for (let i = 0; i < maxPredictions; i++) {
                 labelContainer.appendChild(document.createElement("div"));
             }
